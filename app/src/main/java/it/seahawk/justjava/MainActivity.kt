@@ -10,6 +10,8 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
+    private var quantity : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,9 +21,24 @@ class MainActivity : AppCompatActivity() {
      * This method is called when the order button is clicked.
      */
     fun submitOrder(view: View) {
-        val quantityTextView = findViewById(R.id.quantity_text_view) as TextView
-        display(quantityTextView.text.toString().toInt() + 1)
-        displayPrice(quantityTextView.text.toString().toInt() * 5)
+        display(quantity)
+        displayPrice(quantity * 5)
+    }
+
+    /**
+     * This method is called when the + button is clicked.
+     */
+    fun increment(view: View) {
+        quantity = quantity + 1
+        submitOrder(view)
+    }
+
+    /**
+     * This method is called when the - button is clicked.
+     */
+    fun decrement(view: View) {
+        if (quantity > 0) quantity = quantity - 1
+        submitOrder(view)
     }
 
     /**
