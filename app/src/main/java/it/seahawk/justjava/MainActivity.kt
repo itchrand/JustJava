@@ -1,3 +1,4 @@
+// release-0.1
 package it.seahawk.justjava
 
 import android.support.v7.app.AppCompatActivity
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     fun submitOrder(view: View) {
         display(quantity)
         displayPrice(quantity * 5)
-    }
+      }
 
     /**
      * This method is called when the + button is clicked.
