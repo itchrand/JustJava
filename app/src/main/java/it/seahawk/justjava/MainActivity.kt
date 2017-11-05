@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.view.View
-import java.text.NumberFormat
-import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
      * This method is called when the order button is clicked.
      */
     fun submitOrder(view: View) {
-        display(quantity)
+        displayQuantity(quantity)
         displayPrice(quantity * 5)
       }
 
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * This method displays the given quantity value on the screen.
      */
-    private fun display(number: Int) {
+    private fun displayQuantity(number: Int) {
         val quantityTextView = findViewById(R.id.quantity_text_view) as TextView
         quantityTextView.text = "$number"
     }
@@ -55,6 +53,6 @@ class MainActivity : AppCompatActivity() {
      */
     private fun displayPrice(number: Int) {
         val priceTextView = findViewById(R.id.price_text_view) as TextView
-        priceTextView.setText(NumberFormat.getCurrencyInstance(Locale.ITALY).format(number))
+        priceTextView.setText("$(NumberFormat.getCurrencyInstance(Locale.ITALY).format(number))")
     }
 }
