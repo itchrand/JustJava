@@ -46,15 +46,15 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/orderSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Price"
+        android:text="Order Summary"
         android:textAllCaps="true" />
 
     <TextView
-        android:id="@+id/price_text_view"
+        android:id="@+id/orderSummary_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
