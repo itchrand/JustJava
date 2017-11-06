@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.widget.TextView
 import android.view.View
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private var quantity : Int = 0
+    private var price : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,15 +23,16 @@ class MainActivity : AppCompatActivity() {
      * This method is called when the order button is clicked.
      */
     fun submitOrder(view: View) {
-        display(quantity)
-        displayPrice(quantity * 5)
+        displayQuantity(quantity)
+        displayOrderSummary(createOrderSummary())
       }
 
     /**
      * This method is called when the + button is clicked.
      */
     fun increment(view: View) {
-        quantity = quantity + 1
+        quantity += 1
+        price = calculatePrice(quantity,5)
         submitOrder(view)
     }
 
@@ -38,23 +40,44 @@ class MainActivity : AppCompatActivity() {
      * This method is called when the - button is clicked.
      */
     fun decrement(view: View) {
-        if (quantity > 0) quantity = quantity - 1
+        if (quantity > 0) quantity -= 1
+        price = calculatePrice(quantity,5)
         submitOrder(view)
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private fun display(number: Int) {
+    private fun displayQuantity(quantity: Int) {
         val quantityTextView = findViewById(R.id.quantity_text_view) as TextView
-        quantityTextView.text = "$number"
+        quantityTextView.text = "$quantity"
     }
 
     /**
      * This method displays the given price on the screen.
      */
-    private fun displayPrice(number: Int) {
-        val priceTextView = findViewById(R.id.price_text_view) as TextView
-        priceTextView.setText(NumberFormat.getCurrencyInstance(Locale.ITALY).format(number))
+    private fun displayOrderSummary(orderSummary: String) {
+        val orderSummaryTextView = findViewById(R.id.orderSummary_text_view) as TextView
+        orderSummaryTextView.text = orderSummary
+    }
+
+    /**
+     * This method calculates the price.
+     */
+    private fun calculatePrice(quantity: Int, price: Int) : Int = quantity * price
+
+    /**
+     * This method creates the order summary.
+     */
+    private fun createOrderSummary(): String {
+
+        var orderSummary: String
+        orderSummary = "Name: Kaptain Kunal"
+        orderSummary += "\nQuantity: $quantity"
+        orderSummary += "\n${NumberFormat.getCurrencyInstance(Locale.ITALY).format(price)}"
+        orderSummary += "\nThank you!"
+
+        return orderSummary
+
     }
 }
