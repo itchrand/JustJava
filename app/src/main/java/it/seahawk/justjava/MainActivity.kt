@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.TextView
 import android.view.View
 import android.widget.CheckBox
+import android.widget.EditText
 import java.text.NumberFormat
 import java.util.*
 
@@ -14,6 +15,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private val pricePerCoffee : Int = 5
+    private var name : String = ""
     private var quantity : Int = 0
     private var price : Int = 0
     private var hasWhippedCream : Boolean = false
@@ -28,7 +30,8 @@ class MainActivity : AppCompatActivity() {
      * This method is called when the order button is clicked.
      */
     fun submitOrder(view: View) {
-        getCheckBoxState()
+        getName()
+        getCheckBoxStates()
         displayQuantity(quantity)
         displayOrderSummary(createOrderSummary())
       }
@@ -52,9 +55,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * This method displays the given quantity value on the screen.
+     * This method gets the status of checkboxes.
      */
-    private fun getCheckBoxState() {
+    private fun getName() {
+        var editText = findViewById<EditText>(R.id.name_view) as EditText
+        name = editText.text.toString()
+    }
+
+    /**
+     * This method gets the status of checkboxes.
+     */
+    private fun getCheckBoxStates() {
         var checkBox = findViewById<CheckBox>(R.id.whipped_cream_checkbox) as CheckBox
         hasWhippedCream = checkBox.isChecked
         checkBox = findViewById<CheckBox>(R.id.chocolate_checkbox) as CheckBox
@@ -88,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     private fun createOrderSummary(): String {
 
         var orderSummary: String
-        orderSummary = "Name: Kaptain Kunal"
+        orderSummary = "Name: $name"
         orderSummary += "\nQuantity: $quantity"
         orderSummary += "\nAdd whipped cream? $hasWhippedCream"
         orderSummary += "\nAdd chocolate? $hasChocolate"
