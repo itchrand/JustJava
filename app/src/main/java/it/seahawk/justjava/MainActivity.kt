@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity() {
      * This method displays the given quantity value on the screen.
      */
     private fun getCheckBoxState() {
-        var checkBox = findViewById(R.id.whipped_cream_checkbox) as CheckBox
+        var checkBox = findViewById<CheckBox>(R.id.whipped_cream_checkbox) as CheckBox
         hasWhippedCream = checkBox.isChecked
-        checkBox = findViewById(R.id.chocolate_checkbox) as CheckBox
+        checkBox = findViewById<CheckBox>(R.id.chocolate_checkbox) as CheckBox
         hasChocolate = checkBox.isChecked
     }
 
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
      * This method displays the given quantity value on the screen.
      */
     private fun displayQuantity(quantity: Int) {
-        val quantityTextView = findViewById(R.id.quantity_text_view) as TextView
+        val quantityTextView = findViewById<TextView>(R.id.quantity_text_view) as TextView
         quantityTextView.text = "$quantity"
     }
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
      * This method displays the given price on the screen.
      */
     private fun displayOrderSummary(orderSummary: String) {
-        val orderSummaryTextView = findViewById(R.id.orderSummary_text_view) as TextView
+        val orderSummaryTextView = findViewById<TextView>(R.id.orderSummary_text_view) as TextView
         orderSummaryTextView.text = orderSummary
     }
 
