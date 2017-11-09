@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private var quantity : Int = 0
     private var price : Int = 0
     private var hasWhippedCream : Boolean = false
+    private var hasChocolate : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,8 +55,10 @@ class MainActivity : AppCompatActivity() {
      * This method displays the given quantity value on the screen.
      */
     private fun getCheckBoxState() {
-        val checkBox = findViewById(R.id.whipped_cream_checkbox) as CheckBox
+        var checkBox = findViewById(R.id.whipped_cream_checkbox) as CheckBox
         hasWhippedCream = checkBox.isChecked
+        checkBox = findViewById(R.id.chocolate_checkbox) as CheckBox
+        hasChocolate = checkBox.isChecked
     }
 
     /**
@@ -88,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         orderSummary = "Name: Kaptain Kunal"
         orderSummary += "\nQuantity: $quantity"
         orderSummary += "\nAdd whipped cream? $hasWhippedCream"
+        orderSummary += "\nAdd chocolate? $hasChocolate"
         orderSummary += "\n${NumberFormat.getCurrencyInstance(Locale.ITALY).format(price)}"
         orderSummary += "\nThank you!"
         Log.v("MainActivity","Calculated price after submit order: " + price)
