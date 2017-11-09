@@ -13,6 +13,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private val pricePerCoffee : Int = 5
     private var quantity : Int = 0
     private var price : Int = 0
     private var hasWhippedCream : Boolean = false
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun increment(view: View) {
         quantity += 1
-        price = calculatePrice(quantity,5)
+        price = calculatePrice(quantity, pricePerCoffee)
         submitOrder(view)
     }
 
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
      */
     fun decrement(view: View) {
         if (quantity > 0) quantity -= 1
-        price = calculatePrice(quantity,5)
+        price = calculatePrice(quantity,pricePerCoffee)
         submitOrder(view)
     }
 
