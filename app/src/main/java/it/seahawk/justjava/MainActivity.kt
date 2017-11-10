@@ -10,6 +10,9 @@ import android.widget.CheckBox
 import android.widget.EditText
 import java.text.NumberFormat
 import java.util.*
+import android.widget.Toast
+import android.content.Intent
+import android.net.Uri
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val pricePerWhippedCream : Int = 1
     private val pricePerChocolate : Int = 2
     private var name : String = ""
-    private var quantity : Int = 0
+    private var quantity : Int = 1
     private var price : Int = 0
     private var hasWhippedCream : Boolean = false
     private var hasChocolate : Boolean = false
@@ -36,23 +39,49 @@ class MainActivity : AppCompatActivity() {
         getCheckBoxStates()
         calculatePrice()
         displayQuantity(quantity)
-        displayOrderSummary(createOrderSummary())
+
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:") // only email apps should handle this
+        //intent.putExtra(Intent.EXTRA_EMAIL, addresses)
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Java order")
+        intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary())
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
+        // displayOrderSummary(createOrderSummary())
       }
 
     /**
      * This method is called when the + button is clicked.
      */
     fun increment(view: View) {
-        quantity += 1
-        submitOrder(view)
+        if (quantity < 100){
+            quantity += 1
+            displayOrderSummary()
+        }
+        else giveAToast("You can not order more than 100 cups")
     }
 
     /**
      * This method is called when the - button is clicked.
      */
     fun decrement(view: View) {
-        if (quantity > 0) quantity -= 1
-        submitOrder(view)
+        if (quantity > 1) {
+            quantity -= 1
+            displayOrderSummary()
+        }
+        else giveAToast ("You can not order less than 1 cup")
+    }
+
+    /**
+     * This method gets the status of checkboxes.
+     */
+    private fun giveAToast(message: String) {
+        val context = applicationContext
+        val duration = Toast.LENGTH_SHORT
+
+        val toast = Toast.makeText(context, message, duration)
+        toast.show()
     }
 
     /**
@@ -84,9 +113,14 @@ class MainActivity : AppCompatActivity() {
     /**
      * This method displays the given price on the screen.
      */
-    private fun displayOrderSummary(orderSummary: String) {
+    private fun displayOrderSummary() {
+        getName()
+        getCheckBoxStates()
+        calculatePrice()
+        displayQuantity(quantity)
+
         val orderSummaryTextView = findViewById<TextView>(R.id.orderSummary_text_view) as TextView
-        orderSummaryTextView.text = orderSummary
+        orderSummaryTextView.text = createOrderSummary()
     }
 
     /**
