@@ -15,6 +15,8 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private val pricePerCoffee : Int = 5
+    private val pricePerWhippedCream : Int = 1
+    private val pricePerChocolate : Int = 2
     private var name : String = ""
     private var quantity : Int = 0
     private var price : Int = 0
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     fun submitOrder(view: View) {
         getName()
         getCheckBoxStates()
+        calculatePrice()
         displayQuantity(quantity)
         displayOrderSummary(createOrderSummary())
       }
@@ -41,7 +44,6 @@ class MainActivity : AppCompatActivity() {
      */
     fun increment(view: View) {
         quantity += 1
-        price = calculatePrice(quantity, pricePerCoffee)
         submitOrder(view)
     }
 
@@ -50,7 +52,6 @@ class MainActivity : AppCompatActivity() {
      */
     fun decrement(view: View) {
         if (quantity > 0) quantity -= 1
-        price = calculatePrice(quantity,pricePerCoffee)
         submitOrder(view)
     }
 
@@ -91,7 +92,14 @@ class MainActivity : AppCompatActivity() {
     /**
      * This method calculates the price.
      */
-    private fun calculatePrice(quantity: Int, price: Int) : Int = quantity * price
+    private fun calculatePrice() {
+        var pricePerQuantity : Int = pricePerCoffee
+
+        if (hasWhippedCream) pricePerQuantity += pricePerWhippedCream
+        if (hasChocolate) pricePerQuantity += pricePerChocolate
+
+        price = quantity * pricePerQuantity
+    }
 
     /**
      * This method creates the order summary.
