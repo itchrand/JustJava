@@ -43,12 +43,12 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_SENDTO)
         intent.data = Uri.parse("mailto:") // only email apps should handle this
         //intent.putExtra(Intent.EXTRA_EMAIL, addresses)
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Java order")
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for $name")
         intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary())
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         }
-        // displayOrderSummary(createOrderSummary())
+        displayOrderSummary()
       }
 
     /**
