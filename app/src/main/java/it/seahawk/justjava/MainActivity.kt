@@ -141,10 +141,10 @@ class MainActivity : AppCompatActivity() {
     private fun createOrderSummary(): String {
 
         var orderSummary: String
-        orderSummary = getString(R.string.email_subject,name)
+        orderSummary = getString(R.string.email_subject, name)
         orderSummary += "\n${getString(R.string.quantity)}: $quantity"
-        orderSummary += "\n${getString(R.string.order_summary_add_whipped_cream)} $hasWhippedCream"
-        orderSummary += "\n${getString(R.string.order_summary_add_chocolate)} $hasChocolate"
+        orderSummary += "\n${getString(R.string.order_summary_add_whipped_cream, hasWhippedCream)}"
+        orderSummary += "\n${getString(R.string.order_summary_add_chocolate, hasChocolate)}"
         orderSummary += "\n${getString(R.string.total)} ${NumberFormat.getCurrencyInstance(Locale.ITALY).format(price)}"
         orderSummary += "\n${getString(R.string.thank_you)}"
         Log.v("MainActivity","Calculated price after submit order: " + price)
