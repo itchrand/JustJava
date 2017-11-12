@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="name">Nome</string>
+    <string name="toppings">Toppings</string>
+    <string name="whipped_cream">Panna montata</string>
+    <string name="chocolate">Cioccolato</string>
+    <string name="quantity">Quanitià</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="order">Ordinare</string>
+    <string name="order_summary">Sommario d\'ordine</string>
+    <string name="email_subject">Just Java ordine per %s</string>
+    <string name="toast_increment_limit">Non puoi ordinare più di 100 tazze.</string>
+    <string name="toast_decrement_limit">Non puoi ordinare meno di 1 tazza.</string>
+    <string name="order_summary_add_whipped_cream">Con panna montata?</string>
+    <string name="order_summary_add_chocolate">Con cioccolato?</string>
+    <string name="total">Totale:</string>
+    <string name="thank_you">Grazie!</string>
+</resources>

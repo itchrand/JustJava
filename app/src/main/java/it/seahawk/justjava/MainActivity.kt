@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_SENDTO)
         intent.data = Uri.parse("mailto:") // only email apps should handle this
         //intent.putExtra(Intent.EXTRA_EMAIL, addresses)
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for $name")
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject,name))
         intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary())
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             quantity += 1
             displayOrderSummary()
         }
-        else giveAToast("You can not order more than 100 cups")
+        else giveAToast(getString(R.string.toast_increment_limit))
     }
 
     /**
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             quantity -= 1
             displayOrderSummary()
         }
-        else giveAToast ("You can not order less than 1 cup")
+        else giveAToast (getString(R.string.toast_decrement_limit))
     }
 
     /**
@@ -141,12 +141,12 @@ class MainActivity : AppCompatActivity() {
     private fun createOrderSummary(): String {
 
         var orderSummary: String
-        orderSummary = "Name: $name"
-        orderSummary += "\nQuantity: $quantity"
-        orderSummary += "\nAdd whipped cream? $hasWhippedCream"
-        orderSummary += "\nAdd chocolate? $hasChocolate"
-        orderSummary += "\n${NumberFormat.getCurrencyInstance(Locale.ITALY).format(price)}"
-        orderSummary += "\nThank you!"
+        orderSummary = getString(R.string.email_subject,name)
+        orderSummary += "\n${getString(R.string.quantity)}: $quantity"
+        orderSummary += "\n${getString(R.string.order_summary_add_whipped_cream)} $hasWhippedCream"
+        orderSummary += "\n${getString(R.string.order_summary_add_chocolate)} $hasChocolate"
+        orderSummary += "\n${getString(R.string.total)} ${NumberFormat.getCurrencyInstance(Locale.ITALY).format(price)}"
+        orderSummary += "\n${getString(R.string.thank_you)}"
         Log.v("MainActivity","Calculated price after submit order: " + price)
 
         return orderSummary
