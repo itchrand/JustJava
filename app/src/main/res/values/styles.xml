@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- buttons -->
+    <style name="Buttons" parent="AppTheme">
+        <item name="colorButtonNormal">#F3E5F5</item>
+    </style>
+
+    <!-- Headerlines -->
+    <style name="HeaderTextStyle" parent="AppTheme">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>

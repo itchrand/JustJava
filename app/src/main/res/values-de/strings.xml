@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Just Java</string>
+    <string name="name">Name</string>
+    <string name="toppings">Toppings</string>
+    <string name="whipped_cream">Schlagsahne</string>
+    <string name="chocolate">Schokolade</string>
+    <string name="quantity">Menge</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="order_summary">Bestellübersicht</string>
+    <string name="order">Bestellen</string>
+    <string name="email_subject">Just Java Bestellung für <xliff:g id="name" example="Andre">%s</xliff:g></string>
+    <string name="toast_increment_limit">Du kannst nicht mehr als 100 Tassen bestellen.</string>
+    <string name="toast_decrement_limit">Du kannst nicht weniger als 1 Tasse bestellen.</string>
+    <string name="order_summary_add_whipped_cream">Mit Schlagsahne? <xliff:g id="hasWhippedCream" example="true">%b</xliff:g></string>
+    <string name="order_summary_add_chocolate">Mit Schokoladeüberzug? <xliff:g id="hasChocolate" example="true">%b</xliff:g></string>
+    <string name="total">Gesamt:</string>
+    <string name="thank_you">Danke!</string>
+</resources>
