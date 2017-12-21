@@ -1,6 +1,7 @@
 // release-0.1
 package it.seahawk.justjava
 
+import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,7 +32,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    /**
+    @SuppressLint("StringFormatInvalid")
+            /**
      * This method is called when the order button is clicked.
      */
     fun submitOrder(view: View) {
@@ -138,6 +140,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * This method creates the order summary.
      */
+    @SuppressLint("StringFormatInvalid")
     private fun createOrderSummary(): String {
 
         var orderSummary: String
